@@ -19,6 +19,7 @@ app.post('/proxyreq', function (req, res, next) {
     console.log('req.body[\'uri\']: ', req.body['uri']);
     console.log('req.body[\'method\']: ', req.body['method']);
     console.log('req.body[\'body\']: ', req.body['body']);
+    console.log('req.body[\'json\']: ', req.body['json']);
     const bodyReq = req.body['body'];
     if(bodyReq === undefined) {
         bodyReq = null;
@@ -27,6 +28,7 @@ app.post('/proxyreq', function (req, res, next) {
         uri: req.body['uri'],
         method: req.body['method'],
         body: bodyReq,
+        json: req.body['json'],
         function(error, response, body) {
             if (!error && response.statusCode === 200) {
                 console.log(body);
