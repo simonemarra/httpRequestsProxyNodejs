@@ -35,6 +35,14 @@ app.post('/proxyreq', (req, res, next) =>{
     console.log('req.body[\'method\']: ', req.body['method']);
     console.log('req.body[\'body\']: ', req.body['body']);
     console.log('req.body[\'json\']: ', req.body['json']);
+    console.log('req.body[\'headers\']: ', req.body['headers']);
+    let headersReq = {
+        'Content-Type': 'application/json',
+        'Range': ' bytes=0-1499'
+    }
+    if (req.body['headers'] !== null) {
+        headersReq = req.body['headers'];
+    }
     const bodyReq = req.body['body'];
     if(bodyReq === undefined) {
         bodyReq = null;
@@ -46,7 +54,7 @@ app.post('/proxyreq', (req, res, next) =>{
     fetch(req.body['uri'], {
         method: req.body['method'],
         body: bodyReq,
-        headers: {'Content-Type': 'application/json'}
+        headers: headersReq,
     })
     .then(res => res.json())
     .then(json => {
