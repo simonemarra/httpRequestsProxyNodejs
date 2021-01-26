@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/simonemarra/httpRequestsProxyNodejs#readme",
   "dependencies": {
+    "console-stamp": "^0.2.9",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "@azure/storage-blob": "^12.4.0",
+    "dotenv": "^8.2.0"
   }
 }
